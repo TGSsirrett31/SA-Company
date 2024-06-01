@@ -46,6 +46,7 @@
 .links {
   display: flex;
   gap: 25px;
+  margin-top: 35px;
 }
 
 .links.left {
@@ -59,7 +60,7 @@
 .links a {
   color: white;
   text-decoration: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s;
 }
 
 .links a:hover {
@@ -69,7 +70,7 @@
 .links.left, .links.right {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s, opacity 0.5s ease-in-out;
+  transition: visibility 0s, opacity 0.5s;
 }
 
 .links.visible {
@@ -89,102 +90,100 @@
   border-radius: 50%;
 }
 
-:root {
-  --primary-color: white;
-  --star-count: 50;
+@keyframes move-background {
+  from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to { 
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
+}
+@-webkit-keyframes move-background {
+  from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to { 
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
 }
 
-@keyframes fall {
-  to {
-    transform: translate3d(-30em, 0, 0);
-  }
+@-moz-keyframes move-background {    
+	from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to { 
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
 }
 
-@keyframes tail-fade {
-  0%, 50% {
-    width: var(--star-tail-length);
-    opacity: 1;
-  }
-  70%, 80% {
-    width: 0;
-    opacity: 0.4;
-  }
-  100% {
-    width: 0;
-    opacity: 0;
-  }
+    @-webkit-keyframes move-background {
+	from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to { 
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
 }
 
-@keyframes blink {
-  50% {
-    opacity: 0.6;
-  }
+.background-container{
+	position: fixed;
+	top: 0;
+	left:0;
+	bottom: 0;
+	right: 0;
 }
 
 .stars {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120%;
-  transform: rotate(-45deg);
+ background: black url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+ position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: block;
+  	z-index: 0;
 }
 
-.star {
+.twinkling{
+	width:10000px;
+	height: 100%;
+	background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png") repeat;
+	background-size: 1000px 1000px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    
+    -moz-animation:move-background 70s linear infinite;
+  -ms-animation:move-background 70s linear infinite;
+  -o-animation:move-background 70s linear infinite;
+  -webkit-animation:move-background 70s linear infinite;
+  animation:move-background 70s linear infinite;
+	
+}
+
+.clouds{
+	width:10000px;
+	height: 100%;
+	background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/clouds_repeat.png") repeat;
+	background-size: 1000px 1000px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+
+   -moz-animation:move-background 150s linear infinite;
+  -ms-animation:move-background 150s linear infinite;
+  -o-animation:move-background 150s linear infinite;
+  -webkit-animation:move-background 150s linear infinite;
+  animation:move-background 150s linear infinite;
+}
+.bgImg{
+  height: 70vh;
+  width:70vh;
   position: absolute;
-  left: 0;
-  width: var(--star-tail-length);
-  height: var(--star-tail-height);
-  background: linear-gradient(45deg, currentColor, transparent);
-  border-radius: 50%;
-  filter: drop-shadow(0 0 6px currentColor);
-  transform: translate3d(104em, 0, 0);
-  animation: fall var(--fall-duration) var(--fall-delay) linear infinite, tail-fade var(--tail-fade-duration) var(--fall-delay) ease-out infinite;
-}
-
-.star::before,
-.star::after {
-  position: absolute;
-  content: '';
-  top: 0;
-  left: calc(var(--star-width) / -2);
-  width: var(--star-width);
-  height: 100%;
-  background: linear-gradient(45deg, transparent, currentColor, transparent);
-  border-radius: inherit;
-  animation: blink 2s linear infinite;
-}
-
-.star::before {
-  transform: rotate(45deg);
-}
-
-.star::after {
-  transform: rotate(-45deg);
-}
-
-/* Generate 50 stars with random properties */
-.star:nth-child(1) { --star-tail-length: 7.5em; --top-offset: 4vh; --fall-duration: 7.2s; --fall-delay: 2.5s; }
-.star:nth-child(2) { --star-tail-length: 6.8em; --top-offset: 12vh; --fall-duration: 8.4s; --fall-delay: 1.3s; }
-/* Repeat for all 50 stars... */
-.star:nth-child(50) { --star-tail-length: 5.3em; --top-offset: 98vh; --fall-duration: 9.1s; --fall-delay: 0.6s; }
-
-/* Set the common properties for all stars */
-.star {
-  --star-color: var(--primary-color);
-  --star-tail-height: 2px;
-  --star-width: calc(var(--star-tail-length) / 6);
-  --fall-duration: 9s;
-  --tail-fade-duration: var(--fall-duration);
-  top: var(--top-offset);
-  color: var(--star-color);
-}
-
-/* Media query for small screens */
-@media screen and (max-width: 750px) {
-  .star {
-    /* Adjust the animation for small screens */
-    animation: fall var(--fall-duration) var(--fall-delay) linear infinite;
-    /* Add or modify other properties specific to small screens here */
-  }
+  z-index: 3;
+  right: 20px;
 }
