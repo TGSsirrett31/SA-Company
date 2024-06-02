@@ -42,7 +42,6 @@
   color: white;
   z-index: 1000;
 }
-
 .links {
   display: flex;
   gap: 25px;
@@ -60,17 +59,18 @@
 .links a {
   color: white;
   text-decoration: none;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s ease-in-out; /* Aplicar la función ease-in-out aquí */
 }
 
 .links a:hover {
   opacity: 0.7;
 }
 
-.links.left, .links.right {
+.links.left,
+.links.right {
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s, opacity 0.5s;
+  transition: opacity 0.5s ease-in-out, visibility 0s; /* Ajustar el orden de las transiciones */
 }
 
 .links.visible {
@@ -88,6 +88,12 @@
   height: auto;
   border: 4px solid yellow;
   border-radius: 50%;
+  transition: 0.3s ease-in-out;
+}
+
+.logo img:hover{
+  box-shadow: 5px 5px 4px gray;
+  transition: 0.3s ease-in-out;
 }
 
 @keyframes move-background {
