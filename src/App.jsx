@@ -1,27 +1,23 @@
-import { useState } from 'react'
-import ssLogo from './assets/Sa2.png'
-import './App.css'
+// App.jsx
+import { useState } from 'react';
+import ssLogo from './assets/Sa2.png';
+import './App.css';
 
 function App() {
   const [linksVisible, setLinksVisible] = useState(false);
-  const [activeLink, setActiveLink] = useState('');
-  const [logoClicked, setLogoClicked] = useState(false); // Nuevo estado para controlar si se hizo clic en el logo
+  const [logoClicked, setLogoClicked] = useState(false);
 
   const toggleLinks = () => {
     setLinksVisible(!linksVisible);
-    setLogoClicked(true); // Establecemos el estado del clic en el logo como verdadero cuando se hace clic en él
+    setLogoClicked(true);
     setTimeout(() => {
-      setLogoClicked(false); // Restablecemos el estado del clic en el logo como falso después de un tiempo
-    }, 500); // Ajusta este valor para que coincida con la duración de la transición de los enlaces
-  };
-
-  const handleLinkClick = (link) => {
-    setActiveLink(link);
+      setLogoClicked(false);
+    }, 500);
   };
 
   return (
     <>
-   <div className="background-container">
+      <div className="background-container">
         <img className='bgImg' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/moon2.png" alt="" />
         <div className="stars"></div>
         <div className="twinkling"></div>
@@ -41,10 +37,13 @@ function App() {
         </div>
       </nav>
 
-      <h1>Hi</h1>  
-            <p>Buenas</p>
+      <div className="content">
+        <h1>Welcome to our Website</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet aliquam odio, eget gravida turpis posuere nec.</p>
+        <button>Contact Us</button>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
