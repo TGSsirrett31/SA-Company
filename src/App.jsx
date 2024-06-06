@@ -7,6 +7,7 @@ function App() {
   const [linksVisible, setLinksVisible] = useState(false);
   const [logoHover, setLogoHover] = useState(false);
   const [logoClicked, setLogoClicked] = useState(false);
+  
 
   const toggleLinks = () => {
     setLinksVisible(!linksVisible);
@@ -43,7 +44,7 @@ function App() {
       </nav>
 
       <div className="content">
-        <h1>Welcome to our Website</h1>
+        <h1 className="color-changing">Welcome to our Website</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet aliquam odio, eget gravida turpis posuere nec.</p>
       </div>
     </>
