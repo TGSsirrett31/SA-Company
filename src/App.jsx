@@ -1,10 +1,11 @@
-// App.jsx
 import { useState } from 'react';
 import ssLogo from './assets/Sa2.png';
+import hoverImg from './assets/favicon.png'; // Agrega la imagen que quieres mostrar al hacer hover
 import './App.css';
 
 function App() {
   const [linksVisible, setLinksVisible] = useState(false);
+  const [logoHover, setLogoHover] = useState(false);
   const [logoClicked, setLogoClicked] = useState(false);
 
   const toggleLinks = () => {
@@ -13,6 +14,10 @@ function App() {
     setTimeout(() => {
       setLogoClicked(false);
     }, 500);
+  };
+
+  const handleLogoHover = () => {
+    setLogoHover(!logoHover);
   };
 
   return (
@@ -29,7 +34,7 @@ function App() {
           <a className="nav-item link1" href="#about">About</a>
         </div>
         <div className="logo" onClick={toggleLinks}>
-          <img src={ssLogo} alt="Logo" className={logoClicked ? 'clicked' : ''} />
+          <img src={logoHover ? hoverImg : ssLogo} alt="Logo" className={logoClicked ? 'clicked' : ''} />
         </div>
         <div className={`links right ${linksVisible ? 'visible' : ''}`}>
           <a className="nav-item link3" href="#services">Services</a>
@@ -40,7 +45,6 @@ function App() {
       <div className="content">
         <h1>Welcome to our Website</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquet aliquam odio, eget gravida turpis posuere nec.</p>
-        <button>Contact Us</button>
       </div>
     </>
   );
