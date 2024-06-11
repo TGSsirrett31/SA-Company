@@ -88,7 +88,7 @@
 .logo img {
   width: 90px;
   height: auto;
-  border: 4px solid yellow;
+  border: 4px solid #ffff67;
   border-radius: 50%;
   transition: 0.3s ease-in-out;
 }
@@ -145,6 +145,7 @@
   left: 0;
   bottom: 0;
   right: 0;
+  z-index: -1000000;
 }
 
 .stars {
@@ -204,7 +205,8 @@
 
 .content {
   position: absolute;
-  top: 50%;
+  padding: -40px; 
+  top: 49%;
   left: 10%;
   transform: translateY(-50%);
   text-align: left;
@@ -215,7 +217,9 @@
   font-size: 3rem;
   margin-bottom: 10px;
   color: #FFD700;
+  white-space: normal;
   max-width: 100%;
+  letter-spacing: -0.05em; /* Ajusta este valor según sea necesario */
 }
 
 @keyframes colorChange {
@@ -232,11 +236,32 @@
 
 .content p {
   font-size: 1rem;
-  line-height: 1.2;
   margin-bottom: 10px;
   white-space: normal;
-  width: 500px;
-  max-width: 500px;
+  width: 400px;
+  max-width: 400px;
+}
+
+.icons{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border: solid 2px #fff;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  border-radius: 90%;
+  top: -50%;
+  transition: all 0.5s;
+}
+
+.icons:hover{
+  background-color: #7289DA;
+}
+
+.icons i{
+  font-size: 20px;
 }
 
 @media (max-width: 768px) {
