@@ -5,6 +5,16 @@
   text-align: center;
 }
 
+.section {
+  padding-top: 5rem; /* Ajusta esto si la barra de navegación empuja el contenido */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Navigation Bar */
+
 .navbar {
   position: fixed;
   top: 0;
@@ -104,6 +114,8 @@
   filter: hue-rotate(180deg);
 }
 
+/* Background */
+
 @keyframes move-background {
   from {
     -webkit-transform: translate3d(0px, 0px, 0px);
@@ -195,17 +207,12 @@
   animation: move-background 150s linear infinite;
 }
 
-.bgImg {
-  height: 70vh;
-  width: 70vh;
-  position: absolute;
-  z-index: 3;
-  right: 20px;
-}
+/* Home Content */
 
 .content {
   position: absolute;
-  padding: -40px; 
+  padding: 2rem;
+  margin-top: 4rem;
   top: 49%;
   left: 10%;
   transform: translateY(-50%);
@@ -216,7 +223,7 @@
 .content h1 {
   font-size: 3rem;
   margin-bottom: 10px;
-  color: #FFD700;
+  color: #fff;
   white-space: normal;
   max-width: 100%;
   letter-spacing: -0.05em; /* Ajusta este valor según sea necesario */
@@ -238,31 +245,57 @@
   font-size: 1rem;
   margin-bottom: 10px;
   white-space: normal;
-  width: 400px;
-  max-width: 400px;
+  width: 500px;
+  max-width: 500px;
 }
 
-.icons{
+.learn-more {
+  text-decoration: none;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden; /* Asegura que el pseudo-elemento no se desborde */
+  transition: color 0.4s; /* Suaviza la transición del color del texto */
+}
+
+.learn-more::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%; /* Inicia fuera de la vista */
+  width: 100%; /* Igual al ancho del enlace */
+  height: 100%;
+  background: #0000ff; /* Degradado de ejemplo */
+  transition: all 0.4s ease; /* Suaviza la transición */
+  z-index: -0; /* Asegura que esté detrás del texto */
+}
+
+.learn-more:hover::before {
+  left: 0; /* Mueve el fondo al centro */
+}
+
+.learn-more:hover {
+  color: #000; /* Cambia el color del texto al pasar el mouse */
+  z-index: 1000000; /* Asegura que el texto esté encima del fondo */
+  opacity: 1;
+}
+
+/* About Page*/
+
+.about-us{
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
-  border: solid 2px #fff;
-  width: 40px;
-  height: 40px;
-  margin: 5px;
-  border-radius: 90%;
-  top: -50%;
-  transition: all 0.5s;
 }
 
-.icons:hover{
-  background-color: #7289DA;
+.about-us h1{
+  font-size: 700;
 }
 
-.icons i{
-  font-size: 20px;
-}
+/* Responsive */
 
 @media (max-width: 768px) {
   .navbar {
@@ -337,3 +370,4 @@
     width: auto;
   }
 }
+
